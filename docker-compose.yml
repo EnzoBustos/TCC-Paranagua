@@ -1,0 +1,20 @@
+services:
+  santos:
+    build:
+      context: .
+      shm_size: '2gb'
+    tty: true
+    container_name: santos_dataset
+    volumes:
+      - .:/usr/src/code
+      - /usr/src/code/.venv
+    working_dir: /usr/src/code/
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
+
+    

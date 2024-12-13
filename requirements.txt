@@ -1,0 +1,16 @@
+polars
+windrose
+statsmodels
+matplotlib
+seaborn
+missingno
+pyarrow
+torch==2.3
+uniplot
+torchdyn
+pytorch-lightning
+seaborn
+neuralforecast
+wandb
+pandas
+scipy==1.14
