@@ -8,7 +8,7 @@ import torch_geometric.nn as pyg_nn
 import sys
 
 sys.path.append("src")
-from processing.loader import (
+from loader import (
     MultivariateFeaturesSample,
     MultivariateTimestampsSample,
 )

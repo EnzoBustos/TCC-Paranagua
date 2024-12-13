@@ -14,7 +14,7 @@ import yaml
 import sys
 
 sys.path.append("src")
-from processing.loader import (
+from loader import (
     SantosTestDatasetTorch,
 )
 
@@ -51,9 +51,9 @@ def main():
         float,
         {
             "cattalini_corrente": 60 * 24.0 * 7,
-            "cattalini_maregrafo": 60 * 24.0 * 7,
-            "cattalini_meteorologia": 60 * 24.0 * 7,
-            "odas_corrente": 60 * 24.0 * 7,
+            #"cattalini_maregrafo": 60 * 24.0 * 7,
+            #"cattalini_meteorologia": 60 * 24.0 * 7,
+            #"odas_corrente": 60 * 24.0 * 7,
             "odas_meteorologia": 60 * 24.0 * 7,
             "porto_astronomica": 60 * 24.0 * 7,
             "porto_harmonico": 60 * 24.0 * 7,

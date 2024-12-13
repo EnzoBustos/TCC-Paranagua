@@ -4,18 +4,14 @@ import pathlib
 import torch
 import uniplot
 from torch.utils.data import DataLoader
-from model import (
-    GapAheadAMTSRegressor,
-    PositionalEncoding,
-    index_agreement_torch,
-    ModelConfig,
+from model import ( GapAheadAMTSRegressor, PositionalEncoding, index_agreement_torch, ModelConfig,
 )
 
 import sys
 import yaml
 
 sys.path.append("src")
-from processing.loader import (
+from loader import (
     SantosTestDatasetTorch,
 )
 
@@ -42,17 +38,17 @@ def main():
     context_increase_step = 60 * 12.0
     forecast_increase_step = 60 * 4.0
     sample_size_per_epoch = 1000
-    train_data_path = "data/02_processed/train"
-    test_data_path = "data/02_processed/test"
+    train_data_path = "Data/train"
+    test_data_path = "Data/test"
     lr = 0.0005
     model_version = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
     start_model_path = ""
-    model_name = pathlib.Path(__file__).parent.name
+    model_name = "gap_ahead"
 
     # sample_size_per_epoch = 50
     # start_model_path = "data/04_model_output/20240714032850/epoch_11.pt"
 
-    out_path = f"data/04_trained_models/{model_name}/{model_version}"
+    out_path = f"Data/trained_models/{model_name}/{model_version}"
 
     out_path = pathlib.Path(out_path)
     out_path.mkdir(parents=True, exist_ok=True)
@@ -71,9 +67,9 @@ def main():
         float,
         {
             "cattalini_corrente": 60 * 48.0,
-            "cattalini_maregrafo": 60 * 48.0,
-            "cattalini_meteorologia": 60 * 48.0,
-            "odas_corrente": 60 * 48.0,
+            #"cattalini_maregrafo": 60 * 48.0,
+            #"cattalini_meteorologia": 60 * 48.0,
+            #"odas_corrente": 60 * 48.0,
             "odas_meteorologia": 60 * 48.0,
             "porto_astronomica": 60 * 48.0,
             "porto_harmonico": 60 * 48.0,
@@ -85,9 +81,9 @@ def main():
         float,
         {
             "cattalini_corrente": 60 * 24.0 * 7,
-            "cattalini_maregrafo": 60 * 24.0 * 7,
-            "cattalini_meteorologia": 60 * 24.0 * 7,
-            "odas_corrente": 60 * 24.0 * 7,
+            #"cattalini_maregrafo": 60 * 24.0 * 7,
+            #"cattalini_meteorologia": 60 * 24.0 * 7,
+            #"odas_corrente": 60 * 24.0 * 7,
             "odas_meteorologia": 60 * 24.0 * 7,
             "porto_astronomica": 60 * 24.0 * 7,
             "porto_harmonico": 60 * 24.0 * 7,
@@ -98,8 +94,8 @@ def main():
     target_window_lengths = defaultdict(
         float,
         {
-            "cattalini_meteorologia": 60 * 24.0 * 2,
-            "odas_corrente": 60 * 24.0 * 2,
+            #"cattalini_meteorologia": 60 * 24.0 * 2,
+            #"odas_corrente": 60 * 24.0 * 2,
             "porto_maregrafo": 60 * 24.0 * 2,
         },
     )
@@ -107,8 +103,8 @@ def main():
     max_forecast_window_lengths = defaultdict(
         float,
         {
-            "cattalini_meteorologia": 60 * 24.0 * 2,
-            "odas_corrente": 60 * 24.0 * 2,
+            #"cattalini_meteorologia": 60 * 24.0 * 2,
+            #"odas_corrente": 60 * 24.0 * 2,
             "porto_maregrafo": 60 * 24.0 * 2,
         },
     )

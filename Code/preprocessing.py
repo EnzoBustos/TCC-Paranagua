@@ -5,10 +5,10 @@ import polars as pl
 
 
 def main():
-    base_folder = pathlib.Path("data/02_processed/test")
+    base_folder = pathlib.Path("Data/test")
     files = list(base_folder.glob("*.parquet"))
 
-    targets = ["odas_corrente", "cattalini_meteorologia", "porto_maregrafo"]
+    targets = ["porto_maregrafo"]
 
     missing_data_ratios = [0.0]
 
@@ -16,9 +16,9 @@ def main():
 
     no_look_ahead = [
         "cattalini_corrente",
-        "cattalini_maregrafo",
-        "cattalini_meteorologia",
-        "odas_corrente",
+        #"cattalini_maregrafo",
+        #"cattalini_meteorologia",
+        #"odas_corrente",
         "odas_meteorologia",
         "porto_maregrafo",
     ]
